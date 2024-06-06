@@ -8,6 +8,7 @@ id_usuarios int not null auto_increment primary key,
 nome varchar(80) not null,
 email varchar (100) not null,
 senha varchar(8) not null,
+data_registro varchar(10),
 id_musica int,
 foreign key (id_musica) references tbl_musica(id_musica)
 );
@@ -144,27 +145,36 @@ foreign key(id_album) references tbl_album(id_album)
 
 select * from tbl_musica;
 
-select * from tbl_musica where id_musica = 4;
 
 
-insert into tbl_musica(nome, duracao, foto_capa, id_genero, id_album, id_playlist, URL)values
+insert into tbl_musica(nome, duracao, foto_capa, URL)values
 ("areçigkuha",
  "2:00" ,
  "https://m.media-amazon.com/images/I/713xBiQEdHL._AC_UF1000,1000_QL80_.jpg",
- 1,
- 1,
- null,
 "https://www.youtube.com/watch?v=fLexgOxsZu0&list=RDfLexgOxsZu0&start_radio=1");
-select * from tbl_usuario;
 
-SELECT * FROM tbl_genero WHERE id_genero = 1;
 DELETE FROM tbl_musica;
 
 
 
 insert into tbl_genero(nome)values
-("clássioco");
-
+("clássioco"),
+("ópera"),
+("Ópera"),
+("Pop"),
+("Rock"),
+("Blues"),
+("Jazz"),
+("R&B"),
+("Soul"),
+("Rap"),
+("Funk"),
+("Reggae"),
+("Gospel"),
+("Samba"),
+("Forró"),
+("K-Pop"),
+("Trap");
 
 select * from tbl_album;
 
@@ -184,7 +194,7 @@ insert into tbl_artista (nome, data_nascimento, foto_artista)values
 ("the weeknd", "16/02/1990", "http:****"),
 ("Drake", "24/10/1986", "http:****");
 
-select * from tbl_musica;
+select * from tbl_usuario;
 
 insert into tbl_playlist(nome, data_criacao)values
 ("1#", "21/05/2014"),
@@ -193,19 +203,10 @@ insert into tbl_playlist(nome, data_criacao)values
 ("4#", "21/05/2014"),
 ("5#", "21/05/2014");
 
-insert into tbl_usuario (nome, email, senha, data_registro, id_musica, foto_capa)values
-("Pedro", "fulano@gmail.com", "1234", "21/05/1024", 5),
-("Ana", "ana@gmail.com", "1234", "21/05/2024", 5),
-("Levi", "levi@gmail.com", "1234", "21/05/2024", 5),
-("davi", "davi@gmail.com", "1234", "21/05/2024", 5),
-("Aladdin", "aladdin@gmail.com", "015255", "2002-04-10", 5, null);
+insert into tbl_usuario (nome, email, senha, data_registro)values
+("Pedro", "fulano@gmail.com", "1234", "21/05/1024"),
+("Ana", "ana@gmail.com", "1234", "21/05/2024"),
+("Levi", "levi@gmail.com", "1234", "21/05/2024"),
+("davi", "davi@gmail.com", "1234", "21/05/2024");
 
-insert into tbl_usuario (nome, email, senha, id_musica, foto_capa)values
-("teste", "teste@teste.com", "1234", 5, "https://rollingstone.uol.com.br/media/uploads/coringa-instagram-fotos-novas-1.jpg");
-
-select * from tbl_usuario
-
-
-
-
-
+drop database db_sound_hub_turma_ba;
