@@ -12,8 +12,6 @@ app.use((_request,response,next) =>{
     next();
 })
 
-const bodyParserJson = bodyParser.json();
-
 const controllerMusicas = require('./controller/controller.js')
 
     //http://localhost:8080/v1/soundhub/musicas
@@ -31,37 +29,6 @@ const controllerMusicas = require('./controller/controller.js')
             response.status(404);
         }
     })
-
-    app.get('/v1/soundhub/musicas/:id', cors(), async function(request, response, next){
-
-
-        //recebe o ID da requisição
-        let idMusica = request.params.id
-    
-    
-        //encaminha o ID para a controller buscar o filme
-        let dadosMusicas = await controllerMusicas.getMusicaByID(idMusica)
-    
-        response.status(dadosMusicas.status_code)
-        response.json(dadosMusicas)
-    })
-    
-    app.post('/v1/soundhub/usuario', cors(), bodyParserJson, async function(request, response){
-        //recebe o contente-type da requisição
-        let contentType = request.headers['content-type']
-    
-    
-        
-        //recebe todos os daoos encaminhados na requisição pelo body
-        let dadosBody = request.body
-    
-    
-        //encaminha os dados para o controller enviar para DAO
-        let resultDadosNovoUsuario = await controllerMusicas.setInserirNovoUsuario(dadosBody, contentType)
-        response.status(resultDadosNovoUsuario.status_code)
-        response.json(resultDadosNovoUsuario)
-    })
-
 
     app.listen('8080', function(){
         console.log('API FUNCIONANDO')
