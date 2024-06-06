@@ -12,6 +12,8 @@ app.use((_request,response,next) =>{
     next();
 })
 
+const bodyParserJson = bodyParser.json();
+
 const controllerMusicas = require('./controller/controller.js')
 
     //http://localhost:8080/v1/soundhub/musicas
@@ -30,12 +32,7 @@ const controllerMusicas = require('./controller/controller.js')
         }
     })
 
-    app.listen('8080', function(){
-        console.log('API FUNCIONANDO')
-    })
-
-
- app.get('/v1/soundhub/musicas/:id', cors(), async function(request, response, next){
+    app.get('/v1/soundhub/musicas/:id', cors(), async function(request, response, next){
 
 
         //recebe o ID da requisição
@@ -49,7 +46,7 @@ const controllerMusicas = require('./controller/controller.js')
         response.json(dadosMusicas)
     })
     
-    app.post('/v1/soundhub/musica', cors(), bodyParserJson, async function(request, response){
+    app.post('/v1/soundhub/usuario', cors(), bodyParserJson, async function(request, response){
         //recebe o contente-type da requisição
         let contentType = request.headers['content-type']
     
